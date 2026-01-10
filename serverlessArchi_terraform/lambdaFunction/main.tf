@@ -1,11 +1,11 @@
 data "archive_file" "python_zip_file" {
   type = "zip"
-  source_file = "python/getpi.py"
-  output_path = "python/getpi.zip"
+  source_file = "${path.root}/python/getpi.py"
+  output_path = "${path.root}/python/getpi.zip"
 }
 
 resource "aws_iam_role" "lambda_role" {
-  assume_role_policy = file("lambda-policy.json")
+  assume_role_policy = file("${path.module}/lambda-policy.json")
   name = "lambda_role"
 }
 
