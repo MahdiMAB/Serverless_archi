@@ -18,6 +18,13 @@ resource "aws_api_gateway_method" "api_method" {
   rest_api_id   = aws_api_gateway_rest_api.rest_api.id
 }
 
+resource "aws_api_gateway_authorizer" "cognito_authorizer" {
+  name          = "cognito-authorizer"
+  rest_api_id   = aws_api_gateway_rest_api.rest_api.id
+  type          = "COGNITO_USER_POOLS"
+  provider_arns = [var.cognito_user_pool_arn]
+}
+
 resource "aws_api_gateway_integration" "lambda_integration" {
   http_method             = aws_api_gateway_method.api_method.http_method
   resource_id             = aws_api_gateway_resource.api_resource.id
