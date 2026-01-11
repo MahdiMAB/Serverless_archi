@@ -6,13 +6,6 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    logger.info(json.dumps({
-    "service": "engine-analysis",
-    "engine_id": engine_id,
-    "temperature": temperature,
-    "status": status
-}))
-    
     try:
         # 1. Extraction des données (API Gateway envoie tout dans 'body' sous forme de string)
         body = json.loads(event.get('body', '{}'))
@@ -25,14 +18,22 @@ def lambda_handler(event, context):
             status = "CRITICAL_OVERHEAT"
             logger.warning(f"ALERTE : Surchauffe détectée sur le moteur {engine_id}!")
 
-        # 3. Réponse formatée pour API Gateway (Integration Proxy)
+        # 3. Log pour CloudWatch
+        logger.info(json.dumps({
+            "service": "engine-analysis",
+            "engine_id": engine_id,
+            "temperature": temperature,
+            "status": status
+        }))
+
+        # 4. Réponse formatée pour API Gateway (Integration Proxy)
         response_body = {
             "message": "Données traitées",
             "engine": engine_id,
             "status": status,
             "processed_temp": temperature
         }
-        
+
         return {
             "statusCode": 200,
             "headers": {"Content-Type": "application/json"},
