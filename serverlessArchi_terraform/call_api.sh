@@ -1,9 +1,10 @@
 #!/bin/bash
 
-USER_POOL_CLIENT_ID="5u22te63u8hd5ojheg7l5ee4k3"
-USERNAME="Mahdi"
-PASSWORD="MahdiMabrouk2026*"
-API_URL="https://dsmh7202x6.execute-api.eu-west-3.amazonaws.com/dev/serverless-demo-path"
+USER_POOL_CLIENT_ID="3nljptlvnhume5tqotstq69vps"
+USERNAME="mahdi"
+PASSWORD="MahdiMAbrouk2021*"
+API_URL="https://9vauhttdse.execute-api.eu-west-3.amazonaws.com/dev/serverless-demo-path"
+        
 
 # 1️⃣ Authentification Cognito
 echo "🔐 Authentification Cognito..."
