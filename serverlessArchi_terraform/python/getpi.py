@@ -6,7 +6,12 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    logger.info(f"Événement reçu : {json.dumps(event)}")
+    logger.info(json.dumps({
+    "service": "engine-analysis",
+    "engine_id": engine_id,
+    "temperature": temperature,
+    "status": status
+}))
     
     try:
         # 1. Extraction des données (API Gateway envoie tout dans 'body' sous forme de string)
