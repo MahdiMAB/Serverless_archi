@@ -7,7 +7,7 @@ variable "lambda_function_name" {
 }
 
 
-/*variable "cognito_user_pool_arn" {
+variable "cognito_user_pool_arn" {
   type = string
 
-}*/
+}

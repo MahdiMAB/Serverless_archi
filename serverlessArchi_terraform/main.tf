@@ -11,21 +11,21 @@ module "my_lambda" {
 
 
 module "my_apigw" {
-  source                    = "./apigw"
-  lambda_invoke_arn          = module.my_lambda.lambda_invoke_arn
-  lambda_function_name       = module.my_lambda.lambda_function_name
-  cognito_user_pool_arn      = module.cognito.user_pool_arn
+  source                = "./apigw"
+  lambda_invoke_arn     = module.my_lambda.lambda_invoke_arn
+  lambda_function_name  = module.my_lambda.lambda_function_name
+  cognito_user_pool_arn = module.cognito.user_pool_arn
 }
 
-/*module "cognito" {
+module "cognito" {
   source = "./cognito"
-}*/
+}
 
 module "cloudwatch" {
   source               = "./cloudwatch"
   lambda_function_name = module.my_lambda.lambda_function_name
   retention_days       = 30
-  environment           = "dev"
+  environment          = "dev"
 }
 
 

@@ -11,28 +11,28 @@ resource "aws_api_gateway_resource" "api_resource" {
   rest_api_id = aws_api_gateway_rest_api.rest_api.id
 }
 
-resource "aws_api_gateway_method" "api_method" {
+/*resource "aws_api_gateway_method" "api_method" {
   authorization = "NONE" # Attention : "NONE" en majuscule est plus standard
   http_method   = "POST"
   resource_id   = aws_api_gateway_resource.api_resource.id
   rest_api_id   = aws_api_gateway_rest_api.rest_api.id
-}
+}*/
 
-/*resource "aws_api_gateway_method" "api_method" {
+resource "aws_api_gateway_method" "api_method" {
   authorization = "COGNITO_USER_POOLS"
   authorizer_id = aws_api_gateway_authorizer.cognito_authorizer.id
   http_method   = "POST"
   resource_id   = aws_api_gateway_resource.api_resource.id
   rest_api_id   = aws_api_gateway_rest_api.rest_api.id
-}*/
+}
 
 
-/*resource "aws_api_gateway_authorizer" "cognito_authorizer" {
+resource "aws_api_gateway_authorizer" "cognito_authorizer" {
   name          = "cognito-authorizer"
   rest_api_id   = aws_api_gateway_rest_api.rest_api.id
   type          = "COGNITO_USER_POOLS"
   provider_arns = [var.cognito_user_pool_arn]
-}*/
+}
 
 resource "aws_api_gateway_integration" "lambda_integration" {
   http_method             = aws_api_gateway_method.api_method.http_method
