@@ -17,9 +17,9 @@ module "my_apigw" {
   cognito_user_pool_arn      = module.cognito.user_pool_arn
 }
 
-module "cognito" {
+/*module "cognito" {
   source = "./cognito"
-}
+}*/
 
 module "cloudwatch" {
   source               = "./cloudwatch"
