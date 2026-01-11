@@ -43,12 +43,9 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   uri                     = var.lambda_invoke_arn
 }
 
-# --- LA RESSOURCE CRITIQUE ---
 resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.rest_api.id
 
-  # Dépendance explicite indispensable :
-  # On ne déploie QUE si la méthode et l'intégration sont totalement finies
   depends_on = [
     aws_api_gateway_method.api_method,
     aws_api_gateway_integration.lambda_integration
@@ -58,7 +55,7 @@ resource "aws_api_gateway_deployment" "api_deployment" {
     create_before_destroy = true
   }
 
-  # Astuce d'expert : Forcer le redéploiement si la config change
+
   triggers = {
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.api_resource.id,

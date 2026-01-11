@@ -1,5 +1,5 @@
 resource "aws_cognito_user_pool" "user_pool" {
-  name = "safran-user-pool"
+  name = "project-user-pool"
 
   auto_verified_attributes = ["email"]
 
@@ -13,7 +13,7 @@ resource "aws_cognito_user_pool" "user_pool" {
 }
 
 resource "aws_cognito_user_pool_client" "app_client" {
-  name         = "safran-app-client"
+  name         = "project-app-client"
   user_pool_id = aws_cognito_user_pool.user_pool.id
 
   generate_secret = false

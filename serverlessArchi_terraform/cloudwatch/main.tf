@@ -3,7 +3,7 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
   retention_in_days = var.retention_days
 
   tags = {
-    Application = "safran-engine-analysis"
+    Application = "engine-analysis"
     Environment = var.environment
   }
 }

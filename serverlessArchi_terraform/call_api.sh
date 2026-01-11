@@ -24,7 +24,7 @@ fi
 echo "✅ Token récupéré"
 
 # 3️⃣ Appel API Gateway sécurisé
-echo "🚀 Appel API Gateway..."
+echo " Appel API Gateway..."
 
 curl -X POST \
   -H "Content-Type: application/json" \

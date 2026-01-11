@@ -4,7 +4,7 @@ USERNAME= "" #your youser pool id
 PASSWORD= "" #your youser pool id 
 EMAIL= "" #your youser pool id 
 
-echo "Création de l'utilisateur $USERNAME dans le user pool $USER_POOL_ID ..."
+echo "Création de l'utilisateur $USERNAME dans le user pool $USER_POOL_ID "
 
 aws cognito-idp admin-create-user \
   --user-pool-id "$USER_POOL_ID" \
@@ -20,4 +20,4 @@ aws cognito-idp admin-set-user-password \
   --password "$PASSWORD" \
   --permanent
 
-echo "OK ✅ Utilisateur prêt"
+echo " Utilisateur prêt "
